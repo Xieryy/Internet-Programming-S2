@@ -3,10 +3,8 @@ import { TasksController } from './task.controller';
 import { TaskService } from './task.service';
 
 @Module({
-  imports: [],
+  imports: [TypeOrmModule.forFeature([Task]), UsersModule],
+  providers: [TasksService],
   controllers: [TasksController],
-  providers: [TaskService],
-  exports: [],
-  // Add any other necessary configurations or modules
 })
 export class TaskModule {}
