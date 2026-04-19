@@ -8,6 +8,7 @@ import { Task } from './modules/task/task.entity';
 import { User } from './modules/user/user.entity';
 import { Receipt } from './database/entities/receipts.entity';
 import { ReceiptsModule } from './receipts/receipts.module';
+import { NotificationsModule } from './notifications/notifications.module';
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import { ReceiptsModule } from './receipts/receipts.module';
     UserModule,
     TaskModule,
     ReceiptsModule,
+    NotificationsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
