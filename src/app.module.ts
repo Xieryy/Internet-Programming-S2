@@ -9,6 +9,7 @@ import { User } from './modules/user/user.entity';
 import { Receipt } from './database/entities/receipts.entity';
 import { ReceiptsModule } from './receipts/receipts.module';
 import { NotificationsModule } from './notifications/notifications.module';
+import { OrdersModule } from './orders/orders.module';
 
 @Module({
   imports: [
@@ -22,6 +23,7 @@ import { NotificationsModule } from './notifications/notifications.module';
     TaskModule,
     ReceiptsModule,
     NotificationsModule,
+    OrdersModule,
   ],
   controllers: [AppController],
   providers: [AppService],
