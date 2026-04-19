@@ -1,23 +1,23 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from 'typeorm';
-import { User } from '../users/user.entity';
+import { User } from '../user/user.entity';
 
 @Entity()
 export class Task {
   @PrimaryGeneratedColumn()
-  id: number;
+  id!: number;
 
   @Column()
-  name: string;
+  name!: string;
 
   @Column({ nullable: true })
-  description: string;
+  description!: string;
 
   @Column({ type: 'datetime', default: () => 'CURRENT_TIMESTAMP' })
-  createdAt: Date;
+  createdAt!: Date;
 
   @Column({ type: 'datetime', nullable: true })
-  completedAt: Date;
+  completedAt!: Date;
 
   @ManyToOne(() => User, (user) => user.tasks, { onDelete: 'CASCADE' })
-  user: User;
+  user!: User;
 }
