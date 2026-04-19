@@ -13,6 +13,11 @@ import { TaskService } from './task.service';
 export class TasksController {
   constructor(private readonly taskService: TaskService) {}
 
+  @Get()
+  listTasks() {
+    return this.taskService.findAll();
+  }
+
   @Get('/:id')
   getTask(@Param('id') id: string) {
     return this.taskService.getTask(id);
@@ -23,13 +28,15 @@ export class TasksController {
   }
 
   @Patch('/:id/done')
-  markTaskAsDone(@Body() body: any, @Param('id') id: string) {
-    return this.taskService.updateTask(id, body);
+  markTaskAsDone(@Param('id') id: string) {
+    // set completedAt to now
+    return this.taskService.updateTask(id, { completedAt: new Date() });
   }
 
   @Patch('/:id/pending')
-  markTaskAsPending(@Body() body: any, @Param('id') id: string) {
-    return this.taskService.updateTask(id, body);
+  markTaskAsPending(@Param('id') id: string) {
+    // clear completedAt to mark pending
+    return this.taskService.updateTask(id, { completedAt: null });
   }
 
   @Delete('/:id')

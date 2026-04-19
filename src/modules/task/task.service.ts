@@ -15,6 +15,10 @@ export class TaskService {
     return this.tasksRepo.findOne({ where: { id: nid }, relations: ['user'] });
   }
 
+  findAll() {
+    return this.tasksRepo.find({ relations: ['user'], order: { createdAt: 'DESC' } });
+  }
+
   createTask(body: Partial<Task>) {
     const task = this.tasksRepo.create(body);
     return this.tasksRepo.save(task);
